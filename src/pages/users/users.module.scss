@@ -1,21 +1,73 @@
-.loadButlon {
-    width: 200px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: rgb(66, 66, 66);
-    border-radius: 5px;
-    color: white;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    transition-duration: .2s;
-    flex-direction: row;
-  }
-  
-  .loadButlon:hover {
-    background-color: rgb(77, 77, 77);
-    transition-duration: .2s;
-    justify-content: center;
-  }
+.usersContainer {
+  /* Styles for the main user container */
+  display: flex; /* Allow stacking navbar and user list */
+  flex-direction: column; /* Stack vertically */
+  padding: 20px;
+  justify-content: space-between; /* Align content vertically */
+}
+
+.userListHeader {
+  /* Styles for the user list header */
+  display: flex;
+  justify-content: space-between; /* Align items horizontally */
+  align-items: center; /* Align vertically */
+  margin-bottom: 10px;
+}
+
+.genderSelect {
+  /* Styles for the gender select */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.userList {
+  /* Styles for the user list */
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+  margin: 0;
+  flex: 1; /* Allow list to fill remaining space */
+}
+
+.userListItem {
+  /* Styles for each user list item */
+  display: flex;
+  justify-content: space-between; /* Align content horizontally */
+  align-items: center; /* Align content vertically */
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer; /* Indicate hover/click interaction */
+}
+
+.noData {
+  /* Styles for no data message */
+  text-align: center;
+  padding: 10px;
+}
+
+.loadMoreButton {
+  /* Styles for the load more button */
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgb(66, 66, 66);
+  border-radius: 5px;
+  color: white;
+  border: none;
+  position: relative; /* Position at bottom */
+  top: 20px; /* Distance from bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Offset for centering */
+  cursor: pointer;
+  transition-duration: 0.2s;
+  flex-direction: row;
+}
+
+.loadMoreButton:hover {
+  background-color: rgb(77, 77, 77);
+  transition-duration: 0.2s;
+  justify-content: center;
+}

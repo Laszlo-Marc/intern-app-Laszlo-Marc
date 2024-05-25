@@ -1,13 +1,12 @@
-@import "./styles/index.scss";
+@import './styles/index.scss';
 
 .header {
-  background-color: #a4c991;
+  background-color: #588fcd;
   padding: 10px 20px;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
- 
 }
 
 .layout-container {
@@ -16,6 +15,28 @@
 
 .logo {
   @include for-phone-only {
-    width: 50px;
+    width: 150px;
   }
 }
+nav {
+  display: flex;
+  list-style: none; /* Remove default list styles */
+  padding: 0;
+  margin: 0;
+}
+
+nav button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1a4b83; /* Adjust button color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease; /* Add hover effect */
+  margin-right: 10px; /* Add spacing between buttons */
+}
+
+nav button:hover {
+  background-color: #11315c; /* Adjust hover color */
+}
+

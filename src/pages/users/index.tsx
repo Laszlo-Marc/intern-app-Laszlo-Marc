@@ -24,55 +24,65 @@ const Users = () => {
 
   const getUsers = async (page: number) => {
     const result = await fetch(
-      `${currentEnvironment.api.baseUrl}?results=5&gender=female&page=${String(page)}`,
+      `${currentEnvironment.api.baseUrl}?results=5&gender=${
+        gender === '' ? '' : gender
+      }&page=${String(page)}`,
     );
-    const usersResults = (await result.json()) as User[];
-
+    const response = await result.json();
+    const usersResults = response.results as User[];
     setUsers((oldUsers) => (page === 1 ? usersResults : [...oldUsers, ...usersResults]));
   };
 
   useEffect(() => {
+    setUsers([]);
     void (async () => {
       await getUsers(pageToGet);
     })();
-  }, []);
-
+  }, [gender]);
+  useEffect(() => {
+    void (async () => {
+      await getUsers(pageToGet);
+    })();
+  }, [pageToGet]);
+  const handleLoadMore = () => {
+    setPageToGet((previousPage) => previousPage + 1);
+  };
   return (
-    <div>
-      <div style={{ backgroundColor: 'grey' }}>
-        Users
+    <div className={styles.usersContainer}>
+      <div className={styles.userListHeader}>
+        <h2>Users</h2>
         <select
+          className={styles.genderSelect}
           id="gender"
           name="gender"
-          onChange={(event) => {
-            setGender(event.target.value as Gender);
-          }}
+          value={gender}
+          onChange={(event) => setGender(event.target.value as Gender)}
         >
           <option value="">All</option>
           <option value="female">Female</option>
           <option value="male">Male</option>
         </select>
       </div>
-      <ul>
-        {users.length > 0
-          ? users.map((user: User) => (
-            <li key={user.login.uuid}>
+      <ul className={styles.userList}>
+        {users.length > 0 ? (
+          users.map((user) => (
+            <li key={user.login.uuid} className={styles.userListItem}>
               {user.name.first}
-              {' '}
               {user.name.last}
-              {' '}
+              (
               {user.gender}
-              {' '}
+              )
             </li>
           ))
-          : null}
+        ) : (
+          <p className={styles.noData}>No users found.</p>
+        )}
       </ul>
       <button
-        className={styles.loadButton}
+        className={styles.loadMoreButton}
+        disabled={users.length === 0} // Disable if no users
         type="button"
-        onClick={() => {
-          setPageToGet((v) => v + 1);
-        }}
+        onClick={handleLoadMore}
       >
         Load More
       </button>

@@ -3,22 +3,20 @@ import { NavLink, Outlet, Route, Routes } from 'react-router-dom';
 import Home from 'pages/home';
 import Users from 'pages/users';
 
-import logo from './assets/images/logo.webp';
 import './App.scss';
+import logo from './assets/images/logo.webp';
 
 const Layout = () => (
   <div className="layout-container">
     <header className="header">
       <img alt="Company Logo" className="logo" src={logo} />
       <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/users">Users</NavLink>
-          </li>
-        </ul>
+        <NavLink to="/">
+          <button type="button">Home</button>
+        </NavLink>
+        <NavLink to="/users">
+          <button type="button">Users</button>
+        </NavLink>
       </nav>
     </header>
     <Outlet />
