@@ -75,7 +75,7 @@ const Users = () => {
             </li>
           ))
         ) : (
-          <p className={styles.noData}>No users found.</p>
+          <p className={styles.noData}>Loading users...</p>
         )}
       </ul>
       <button

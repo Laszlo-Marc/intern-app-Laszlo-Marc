@@ -5,6 +5,7 @@ import styles from './home.module.scss';
 
 type CardT = {
   description: string;
+
   title: string;
 };
 
@@ -103,10 +104,10 @@ const Home: React.FC = () => {
         <div className={styles.popupForm}>
           <form onSubmit={handleFormSubmit}>
             <label htmlFor="title">Title:</label>
-            <input ref={titleRef} id="title" name="title" required type="text" />
+            <input ref={titleRef} id="title" maxLength={30} name="title" required type="text" />
             <br />
             <label htmlFor="description">Description:</label>
-            <textarea ref={descriptionRef} id="description" name="description" required />
+            <textarea ref={descriptionRef} id="description" maxLength={100} name="description" required />
             <br />
             <button type="submit">Submit</button>
             <button type="button" onClick={handleCloseAddCardForm}>
@@ -124,6 +125,7 @@ const Home: React.FC = () => {
               ref={updateTitleRef}
               defaultValue={cards[cardToUpdateIndex].title} // Pre-populate with existing title
               id="title"
+              maxLength={20}
               name="title"
               required
               type="text"
@@ -134,6 +136,7 @@ const Home: React.FC = () => {
               ref={updateDescriptionRef}
               defaultValue={cards[cardToUpdateIndex].description}
               id="description"
+              maxLength={60}
               name="description"
               required
             />
